@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e7d2e04f-4d72-443e-bcf6-c5279bb33d6f" name="Default" comment="" />
+    <list default="true" id="e7d2e04f-4d72-443e-bcf6-c5279bb33d6f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fib.php" afterPath="$PROJECT_DIR$/fib.php" />
+    </list>
     <ignored path="fib.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -24,8 +26,8 @@
       <file leaf-file-name="fib.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fib.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+            <state relative-caret-position="54">
+              <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -179,15 +181,15 @@
       <updated>1477704705430</updated>
       <workItem from="1477704708153" duration="686000" />
       <workItem from="1477725796458" duration="1105000" />
-      <workItem from="1477728089667" duration="184000" />
+      <workItem from="1477728089667" duration="802000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1975000" />
+    <option name="totallyTimeSpent" value="2593000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="62" y="62" width="1281" height="704" extended-state="0" />
+    <frame x="62" y="62" width="1281" height="704" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -222,7 +224,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/fib.php</url>
+          <line>19</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -236,8 +246,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fib.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+        <state relative-caret-position="54">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
           <folding />
         </state>
       </provider>
