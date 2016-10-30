@@ -11,6 +11,7 @@ header('Content-type: text/json');
 /**
  * Number of iterations of the Fibonacci sequence to compute
  * @param int $tot
+ * @return dictionary $arr contains Fibonacci numbers and the corresponding indices
  */
 function fib($tot)
 {
@@ -19,14 +20,14 @@ function fib($tot)
     $arr = array();
     for($i = 0; $i <= $tot; $i++)
     {
+        $arr[$i] = $a;
         $temp = $b;
         $b = $a;
         $a = $a + $temp;
-        $arr[$i] = $a;
     }
     return $arr;
-
 }
+
 $numbers = [];
 
 $numbers["status"] = http_response_code();
