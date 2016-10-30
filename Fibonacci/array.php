@@ -1,11 +1,13 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: gabriel
+ * User: Gabriel Sturtevant
  * Date: 10/28/16
  * Time: 6:32 PM
  */
+
 header('Content-type: text/json');
+
 /**
  * Number of iterations of the Fibonacci sequence to compute
  * @param int $tot
@@ -25,11 +27,12 @@ function fib($tot)
     return $arr;
 
 }
-$iterations = $_SERVER['QUERY_STRING'];
-$arr = fib($iterations);
 $numbers = [];
+
 $numbers["status"] = http_response_code();
-$numbers["Fibonacci"] = $iterations;
-$numbers["numbers"] = $arr;
+$numbers["Fibonacci"] = $_SERVER['QUERY_STRING'];
+$numbers["numbers"] = fib($numbers["Fibonacci"]);
+
 $numbers = json_encode($numbers, JSON_PRETTY_PRINT+JSON_FORCE_OBJECT);
+
 print_r($numbers);
