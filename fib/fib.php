@@ -22,12 +22,14 @@ function fib($tot)
         $a = $a + $temp;
         $arr[$i] = $a;
     }
+    return $arr;
 
-    $numbers = array();
-    $numbers["status"] = http_response_code();
-    $numbers["numbers"] = $arr;
-    $numbers = json_encode($numbers, JSON_PRETTY_PRINT+JSON_FORCE_OBJECT);
-    return $numbers;
 }
 $iterations = $_SERVER['QUERY_STRING'];
-print_r(fib($iterations));
+$arr = fib($iterations);
+$numbers = [];
+$numbers["status"] = http_response_code();
+$numbers["Fibonacci"] = $iterations;
+$numbers["numbers"] = $arr;
+$numbers = json_encode($numbers, JSON_PRETTY_PRINT+JSON_FORCE_OBJECT);
+print_r($numbers);
