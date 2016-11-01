@@ -9,9 +9,9 @@
 header('Content-type: text/json');
 
 /**
- * Number of iterations of the Fibonacci sequence to compute
- * @param int $tot
- * @return dictionary $arr contains Fibonacci numbers and the corresponding indices
+ * Computes the Fibonacci sequence
+ * @param int $tot number of iterations of the Fibonacci sequence to compute
+ * @return array $arr contains Fibonacci numbers and the corresponding indices
  */
 function fib($tot)
 {
@@ -30,10 +30,13 @@ function fib($tot)
 
 $numbers = [];
 
+$numbers["Version"] = "Version 0.1";
 $numbers["status"] = http_response_code();
 $numbers["Fibonacci"] = $_SERVER['QUERY_STRING'];
+$numbers["Success"] = $numbers["Fibonacci"] > 0;
 $numbers["numbers"] = fib($numbers["Fibonacci"]);
 
-$numbers = json_encode($numbers, JSON_PRETTY_PRINT+JSON_FORCE_OBJECT);
+$numbers = json_encode($numbers, JSON_PRETTY_PRINT + JSON_FORCE_OBJECT);
 
 print_r($numbers);
+echo "\n";
