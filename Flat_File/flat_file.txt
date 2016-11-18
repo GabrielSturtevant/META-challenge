@@ -1,0 +1,9 @@
+1,Bruce,Wayne,Batman,male
+2,Clark,Kent,Superman,male
+3,Peter,Parker,Spiderman,male
+4,Bobby,Drake,Iceman,male
+5,Angelica,Jones,Firestar,female
+6,Tony,Stark,IronMan,male
+7,Bruce,Banner,Hulk,male
+8,Aurora,Dante,Lightwave,female
+9,Jean,Grey,Phoenix,female
