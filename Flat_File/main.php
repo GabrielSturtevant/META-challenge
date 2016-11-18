@@ -6,10 +6,13 @@
  * Time: 9:55 PM
  */
 header('Content-type: text/json');
-$core_path = (string)dirname(__FILE__, 3) . "/flat_file.txt";
+
+$core_path = realpath(dirname(__FILE__) . '/../..');
+$core_path = $core_path . '/flat_file.csv';
+
 /**
- * @param $hero_id
- * @return array
+ * @param $hero_id - ID number to search for
+ * @return array - Contains info about hero with specified id
  */
 function read_file_id($hero_id){
     $row = str_getcsv(file($GLOBALS['core_path'])[$hero_id - 1]);
@@ -17,8 +20,8 @@ function read_file_id($hero_id){
 }
 
 /**
- * @param $hero_persona
- * @return array
+ * @param $hero_persona - Persona to search for
+ * @return array - Contains info about hero with specified persona
  */
 function read_file_persona($hero_persona){
     $row = array();
@@ -32,8 +35,8 @@ function read_file_persona($hero_persona){
 }
 
 /**
- * @param $hero_sex
- * @return array
+ * @param $hero_sex - Sex to search for
+ * @return array - Contains info about hero with specified sex
  */
 function read_file_sex($hero_sex){
     $row = array();
@@ -47,8 +50,8 @@ function read_file_sex($hero_sex){
 }
 
 /**
- * @param $hero_first_name
- * @return array
+ * @param $hero_first_name - First name to search for
+ * @return array - Contains info about hero with specified first name
  */
 function read_file_first_name($hero_first_name){
     $row = array();
@@ -62,8 +65,8 @@ function read_file_first_name($hero_first_name){
 }
 
 /**
- * @param $hero_last_name
- * @return array
+ * @param $hero_last_name - last name to search for
+ * @return array - Contains info about hero with specified last name
  */
 function read_file_last_name($hero_last_name){
     $row = array();
@@ -85,6 +88,8 @@ $hero_last_name = htmlspecialchars($_GET["last_name"]);
 $row = array();
 $count = 0;
 
+//The following block controls which searches are executed
+//Begin search block
 if($hero_id){
     $count++;
     array_push($row, read_file_id($hero_id));
@@ -113,17 +118,35 @@ if($hero_last_name){
         array_push($row, $line);
     }
 }
+
+
 $hero = array();
-if($count > 1){
+$rowcount = 0;
+foreach ($row as $line){
+    if(!empty(array_filter($line)))
+        $rowcount++;
+}
+//End search block
+
+
+//The following logic controls hero array population
+//Begin population block
+if($rowcount == 0){
+    $hero["404"] = "Hero not found";
+} elseif($count > 1){
     $row = array_diff_assoc($row, array_unique($row, SORT_REGULAR));
     foreach ($row as $line){
         $result = $line;
     }
-    $hero["id"] = $result[0];
-    $hero["first-name"] = $result[1];
-    $hero["last-name"] = $result[2];
-    $hero["persona"] = $result[3];
-    $hero["sex"] = $result[4];
+    if(empty(array_filter($line))){
+        $hero["404"] = "Hero not found";
+    } else {
+        $hero["id"] = $result[0];
+        $hero["first-name"] = $result[1];
+        $hero["last-name"] = $result[2];
+        $hero["persona"] = $result[3];
+        $hero["sex"] = $result[4];
+    }
 
 } elseif ($count == 1 and !$hero_sex){
     foreach ($row as $line){
@@ -144,9 +167,13 @@ if($count > 1){
         array_push($hero, $temp);
     }
 }
+//End population block
+
+
 $to_print["status"] = "200";
 $to_print["success"] = "true";
 $to_print["Version"] = "JSON-Flat-File-0.1";
 $to_print["Hero"] = $hero;
 $to_print = json_encode($to_print, JSON_PRETTY_PRINT|JSON_FORCE_OBJECT);
 print_r($to_print);
+print "\n";
