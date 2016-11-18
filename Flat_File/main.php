@@ -118,35 +118,22 @@ if($hero_last_name){
         array_push($row, $line);
     }
 }
-
-
-$hero = array();
-$rowcount = 0;
-foreach ($row as $line){
-    if(!empty(array_filter($line)))
-        $rowcount++;
-}
 //End search block
 
 
 //The following logic controls hero array population
 //Begin population block
-if($rowcount == 0){
-    $hero["404"] = "Hero not found";
-} elseif($count > 1){
+$hero = array();
+if($count > 1){
     $row = array_diff_assoc($row, array_unique($row, SORT_REGULAR));
     foreach ($row as $line){
         $result = $line;
     }
-    if(empty(array_filter($line))){
-        $hero["404"] = "Hero not found";
-    } else {
-        $hero["id"] = $result[0];
-        $hero["first-name"] = $result[1];
-        $hero["last-name"] = $result[2];
-        $hero["persona"] = $result[3];
-        $hero["sex"] = $result[4];
-    }
+    $hero["id"] = $result[0];
+    $hero["first-name"] = $result[1];
+    $hero["last-name"] = $result[2];
+    $hero["persona"] = $result[3];
+    $hero["sex"] = $result[4];
 
 } elseif ($count == 1 and !$hero_sex){
     foreach ($row as $line){
